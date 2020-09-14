@@ -16,15 +16,18 @@ pipline{
       steps {
         contentReplace (
           configs: [
-            fileContentReplaceItemConfig(  
-              search: "BACKEND_ENDPOINT_VARIABLE"
-              replace: "${env.BACKEND_ENDPOINT}",
-              matchcount: 1
+            fileContentReplaceItemConfig(
+              configs: [  
+                fileContentReplaceItemConfig( 
+                  search: "BACKEND_ENDPOINT_VARIABLE"
+                  replace: "${env.BACKEND_ENDPOINT}",
+                  matchcount: 1
+                )
+              ],
+              fileEncoding: 'UTF-8',
+              filePath: './src/agent.js'
             )
-          ],
-          fileEncoding: 'UTF-8',
-          filePath: './src/agent.js'
-        )
+          ]
         sh 'npm install'
         sh 'npm run build'      
       }
