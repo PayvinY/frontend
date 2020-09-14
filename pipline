@@ -1,4 +1,4 @@
-pipline{
+pipeline{
   agent any
   environment {
     FE_S3_Bucket = 'payvinyhillel'
