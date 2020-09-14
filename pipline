@@ -1,0 +1,66 @@
+pipline{
+  agent any
+  environment {
+    FE_S3_Bucket = 'payvinyhillel'
+    CF_DIST_ID = ''
+    BACKEND_ENDPOINT = 'https://yurii.tiab.tech/api'
+  }
+  stages{
+    stage("Build") {
+      agent {
+        docker {
+          image "node:12"
+          reuseNode true
+        }
+      }
+      steps {
+        contentReplace (
+          configs: [
+            fileContentReplaceConfig(
+              configs: [  
+                fileContentReplaceItemConfig( 
+                  search: "BACKEND_ENDPOINT_VARIABLE"
+                  replace: "${env.BACKEND_ENDPOINT}",
+                  matchcount: 1
+                )
+              ],
+              fileEncoding: 'UTF-8',
+              filePath: './src/agent.js'
+            )
+          ]
+        sh 'npm install'
+        sh 'npm run build'      
+      }
+    }
+    stage("Deploy") {
+      environment {
+        AWS_DEFAULT_REGION = 'us-east-1'
+      } 
+      agent {
+          docker {
+              image 'amazon/aws-cli'
+              reuseNode true
+              args '--entrypoint=""'
+          }
+      }
+      steps {
+       withCredentials([[
+        $class: 'AmazonWebServicesCredentialsBinding',
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+        credentialsId: 'aws_creds'
+       ]]) { 
+             sh """
+             aws s3 sync ./build/ s3://$env.FE_S3_Bucket}/
+             aws cloudfront create-invalidation --distribution-id ${env.CF_DIST_ID} --paths "/*"
+             """
+            }
+      }
+    }
+  } 
+  post{
+    always{
+      cleanWs()
+    }
+  }
+}
