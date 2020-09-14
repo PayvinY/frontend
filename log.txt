@@ -1,0 +1,231 @@
+Branch indexing
+Connecting to https://api.github.com using payviny/****** (GitHub Access Token)
+Obtained pipline from e5601e1de7a2027f0b1832bea4f6ce08da6a0401
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/frontend_master
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential github
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository https://github.com/PayvinY/frontend.git
+ > git init /var/jenkins_home/workspace/frontend_master # timeout=10
+Fetching upstream changes from https://github.com/PayvinY/frontend.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.26.2'
+using GIT_ASKPASS to set credentials GitHub Access Token
+ > git fetch --no-tags --force --progress -- https://github.com/PayvinY/frontend.git +refs/heads/master:refs/remotes/origin/master # timeout=10
+ > git config remote.origin.url https://github.com/PayvinY/frontend.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master # timeout=10
+Avoid second fetch
+Checking out Revision e5601e1de7a2027f0b1832bea4f6ce08da6a0401 (master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f e5601e1de7a2027f0b1832bea4f6ce08da6a0401 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master e5601e1de7a2027f0b1832bea4f6ce08da6a0401 # timeout=10
+Commit message: "ver4 15.09"
+ > git rev-list --no-walk bd3661a2cb6dcf1c7dde4f9dbdcc1e1d3cf08e68 # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] getContext
+[Pipeline] isUnix
+[Pipeline] sh
++ docker inspect -f . node:latest
+.
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container b4a370e1ae63fcf36e38c2a1acc45e1dc2bc6173f4e8a5752459f5b9dc820cb3
+but /var/jenkins_home/workspace/frontend_master could not be found among []
+but /var/jenkins_home/workspace/frontend_master@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/frontend_master -v /var/jenkins_home/workspace/frontend_master:/var/jenkins_home/workspace/frontend_master:rw,z -v /var/jenkins_home/workspace/frontend_master@tmp:/var/jenkins_home/workspace/frontend_master@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:latest cat
+$ docker top 9311e476b6e7c40a37eea4fa27b626b06e48aa39fed915e12cd19a7a65414917 -eo pid,comm
+[Pipeline] {
+[Pipeline] step
+content-replace start
+ > replace content of file: /var/jenkins_home/workspace/frontend_master/src/agent.js
+   > replace : [const API_ROOT = 'BACKEND_ENDPOINT_VARIABLE';] => [const API_ROOT = 'https://yurii.tiab.tech/api';]
+   > replace times: 1, [BACKEND_ENDPOINT_VARIABLE] => [https://yurii.tiab.tech/api]
+content-replace end
+[Pipeline] sh
++ npm install
+npm WARN deprecated extract-text-webpack-plugin@3.0.2: Deprecated. Please use https://github.com/webpack-contrib/mini-css-extract-plugin
+npm WARN deprecated fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+npm WARN deprecated browserslist@2.11.3: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+npm WARN deprecated core-js@2.6.11: core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.
+npm WARN deprecated sw-precache@5.2.1: Please migrate to Workbox: https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-sw
+npm WARN deprecated chokidar@1.7.0: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+npm WARN deprecated sw-toolbox@3.6.0: Please migrate to Workbox: https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-sw
+npm WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+npm WARN deprecated circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+npm WARN deprecated chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+
+> core-js@2.6.11 postinstall /var/jenkins_home/workspace/frontend_master/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> uglifyjs-webpack-plugin@0.4.6 postinstall /var/jenkins_home/workspace/frontend_master/node_modules/uglifyjs-webpack-plugin
+> node lib/post_install.js
+
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.1.3 (node_modules/react-scripts/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN notsup Unsupported engine for watchpack-chokidar2@2.0.0: wanted: {"node":"<8.10.0"} (current: {"node":"14.10.1","npm":"6.14.8"})
+npm WARN notsup Not compatible with your version of node/npm: watchpack-chokidar2@2.0.0
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.1.2 (node_modules/chokidar/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+
+added 1407 packages from 785 contributors and audited 1409 packages in 34.676s
+
+29 packages are looking for funding
+  run `npm fund` for details
+
+found 44 vulnerabilities (32 low, 6 moderate, 6 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+[Pipeline] sh
++ npm run build
+
+> react-redux-realworld-example-app@0.1.0 build /var/jenkins_home/workspace/frontend_master
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  86.27 KB  build/static/js/main.e930c791.js
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  http://bit.ly/2vY88Kr
+
+[Pipeline] }
+$ docker stop --time=1 9311e476b6e7c40a37eea4fa27b626b06e48aa39fed915e12cd19a7a65414917
+$ docker rm -f 9311e476b6e7c40a37eea4fa27b626b06e48aa39fed915e12cd19a7a65414917
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] getContext
+[Pipeline] isUnix
+[Pipeline] sh
++ docker inspect -f . amazon/aws-cli
+.
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container b4a370e1ae63fcf36e38c2a1acc45e1dc2bc6173f4e8a5752459f5b9dc820cb3
+but /var/jenkins_home/workspace/frontend_master could not be found among []
+but /var/jenkins_home/workspace/frontend_master@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 --entrypoint= -w /var/jenkins_home/workspace/frontend_master -v /var/jenkins_home/workspace/frontend_master:/var/jenkins_home/workspace/frontend_master:rw,z -v /var/jenkins_home/workspace/frontend_master@tmp:/var/jenkins_home/workspace/frontend_master@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** amazon/aws-cli cat
+$ docker top 04fb111aa4757db7fa8d65aa135b38b189d37f97d2aee2f3ee0478ed595811e0 -eo pid,comm
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $AWS_ACCESS_KEY_ID or $AWS_SECRET_ACCESS_KEY
+[Pipeline] {
+[Pipeline] sh
++ aws s3 sync ./build/ s3://payvinyhillel/
+Completed 24.3 KiB/1.9 MiB (54.8 KiB/s) with 6 file(s) remaining
+upload: build/favicon.ico to s3://payvinyhillel/favicon.ico     
+Completed 24.3 KiB/1.9 MiB (54.8 KiB/s) with 5 file(s) remaining
+Completed 27.3 KiB/1.9 MiB (35.7 KiB/s) with 5 file(s) remaining
+upload: build/service-worker.js to s3://payvinyhillel/service-worker.js
+Completed 27.3 KiB/1.9 MiB (35.7 KiB/s) with 4 file(s) remaining
+Completed 27.4 KiB/1.9 MiB (34.3 KiB/s) with 4 file(s) remaining
+upload: build/asset-manifest.json to s3://payvinyhillel/asset-manifest.json
+Completed 27.4 KiB/1.9 MiB (34.3 KiB/s) with 3 file(s) remaining
+Completed 28.0 KiB/1.9 MiB (33.3 KiB/s) with 3 file(s) remaining
+upload: build/index.html to s3://payvinyhillel/index.html       
+Completed 28.0 KiB/1.9 MiB (33.3 KiB/s) with 2 file(s) remaining
+Completed 284.0 KiB/1.9 MiB (270.2 KiB/s) with 2 file(s) remaining
+Completed 540.0 KiB/1.9 MiB (504.3 KiB/s) with 2 file(s) remaining
+Completed 796.0 KiB/1.9 MiB (649.5 KiB/s) with 2 file(s) remaining
+Completed 1.0 MiB/1.9 MiB (847.6 KiB/s) with 2 file(s) remaining  
+Completed 1.3 MiB/1.9 MiB (962.0 KiB/s) with 2 file(s) remaining  
+Completed 1.5 MiB/1.9 MiB (1.1 MiB/s) with 2 file(s) remaining    
+Completed 1.6 MiB/1.9 MiB (1.1 MiB/s) with 2 file(s) remaining    
+upload: build/static/js/main.e930c791.js to s3://payvinyhillel/static/js/main.e930c791.js
+Completed 1.6 MiB/1.9 MiB (1.1 MiB/s) with 1 file(s) remaining
+Completed 1.8 MiB/1.9 MiB (1.3 MiB/s) with 1 file(s) remaining
+Completed 1.9 MiB/1.9 MiB (979.3 KiB/s) with 1 file(s) remaining
+upload: build/static/js/main.e930c791.js.map to s3://payvinyhillel/static/js/main.e930c791.js.map
++ aws cloudfront create-invalidation --distribution-id E1MFGGIMF293D7 --paths '/*'
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/E1MFGGIMF293D7/invalidation/I2W7PEMUZS4WRH",
+    "Invalidation": {
+        "Id": "I2W7PEMUZS4WRH",
+        "Status": "InProgress",
+        "CreateTime": "2020-09-14T23:07:16.872000+00:00",
+        "InvalidationBatch": {
+            "Paths": {
+                "Quantity": 1,
+                "Items": [
+                    "/*"
+                ]
+            },
+            "CallerReference": "cli-1600124835-45994"
+        }
+    }
+}
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+$ docker stop --time=1 04fb111aa4757db7fa8d65aa135b38b189d37f97d2aee2f3ee0478ed595811e0
+$ docker rm -f 04fb111aa4757db7fa8d65aa135b38b189d37f97d2aee2f3ee0478ed595811e0
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+
