@@ -16,7 +16,7 @@ pipline{
       steps {
         contentReplace (
           configs: [
-            fileContentReplaceItemConfig(
+            fileContentReplaceConfig(
               configs: [  
                 fileContentReplaceItemConfig( 
                   search: "BACKEND_ENDPOINT_VARIABLE"
