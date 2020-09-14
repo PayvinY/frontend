@@ -28,6 +28,7 @@ pipline{
               filePath: './src/agent.js'
             )
           ]
+        )
         sh 'npm install'
         sh 'npm run build'      
       }
@@ -51,7 +52,7 @@ pipline{
         credentialsId: 'aws_creds'
        ]]) { 
              sh """
-             aws s3 sync ./build/ s3://$env.FE_S3_Bucket}/
+             aws s3 sync ./build/ s3://${env.FE_S3_Bucket}
              aws cloudfront create-invalidation --distribution-id ${env.CF_DIST_ID} --paths "/*"
              """
             }
