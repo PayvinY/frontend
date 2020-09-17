@@ -2,7 +2,7 @@ pipeline{
   agent any
   environment {
     FE_S3_Bucket = 'payvinyhillel'
-    CF_DIST_ID = 'E1MFGGIMF293D7'
+    CF_DIST_ID = 'E1TDB6JUZH3UVG'
     BACKEND_ENDPOINT = 'https://yurii.tiab.tech/api'
   }
   stages{
