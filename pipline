@@ -3,7 +3,7 @@ pipeline{
   environment {
     FE_S3_Bucket = 'payvinyhillel'
     CF_DIST_ID = 'E1TDB6JUZH3UVG'
-    BACKEND_ENDPOINT = 'https://api.urii.tiab.tech/api'
+    BACKEND_ENDPOINT = 'https://api.yurii.tiab.tech/api'
   }
   stages{
         stage("Build") {
