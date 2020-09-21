@@ -26,7 +26,7 @@ pipeline{
             }
             steps {
                 withAWSParameterStore(
-                    credentialsID: 'aws_creds',
+                    credentialsId: 'aws_creds',
                     naming: 'basename',
                     path: "/${env.BRANCH_NAME}",
                     regionName: "${env.AWS_DEFAULT_REGION}"
@@ -71,7 +71,7 @@ pipeline{
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                       withAWSParameterStore(
-                        credentialsID: 'aws_creds',
+                        credentialsId: 'aws_creds',
                         naming: 'basename',
                         path: "/${env.BRANCH_NAME}",
                         regionName: "${env.AWS_DEFAULT_REGION}"
