@@ -28,7 +28,7 @@ pipeline{
                 withAWSParameterStore(
                     credentialsID: 'aws_creds',
                     naming: 'basename',
-                    path: "/${env.BRANCH_NAME",
+                    path: "/${env.BRANCH_NAME}",
                     regionName: "${env.AWS_DEFAULT_REGION}"
                 ){
                     sh 'env'
