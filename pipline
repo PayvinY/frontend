@@ -2,9 +2,9 @@ pipeline{
   agent any
     parameters {
 
-      string(name:  'FE_S3_Bucket' , defaultvalue : '', description: 'S3 bucket with frontend')
-      string(name:  'CF_DIST_ID' , defaultvalue : '', description: 'Cloudfront distribution ID')
-      string(name:  'BACKEND_ENDPOINT' , defaultvalue : '', description: 'API endpoint URL')
+      string(name:  'FE_S3_Bucket' , defaultValue : '', description: 'S3 bucket with frontend')
+      string(name:  'CF_DIST_ID' , defaultValue : '', description: 'Cloudfront distribution ID')
+      string(name:  'BACKEND_ENDPOINT' , defaultValue : '', description: 'API endpoint URL')
     }
 
 /*
