@@ -7,12 +7,14 @@ pipeline{
       string(name:  'BACKEND_ENDPOINT' , defaultvalue : '', description: 'API endpoint URL')
     }
 
-
-#  environment {
+\*
+  environment {
 #    FE_S3_Bucket = 'payvinyhillel'
 #    CF_DIST_ID = 'E1TDB6JUZH3UVG'
 #    BACKEND_ENDPOINT = 'https://api.yurii.tiab.tech/api'
 #  }
+*\
+
   stages{
         stage("Build") {
             agent {
