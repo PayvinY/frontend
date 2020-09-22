@@ -79,7 +79,7 @@ pipeline{
                         sh 'env'
                         sh """
                         aws s3 sync ./build/ s3://${env.FE_S3_BUCKET}/ 
-                        aws cloudfront create-invalidation --distribution-id ${env.CF_DIST_ID} --paths "/*"
+                        aws cloudfront create-invalidation --distribution-id ${env.CF_ID} --paths "/*"
                         """
                        }
                   }
