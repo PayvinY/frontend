@@ -18,6 +18,7 @@ pipeline{
 */
   environment {
    AWS_DEFAULT_REGION = 'us-east-1'
+   BRANCH_NAME = 'master'
   }
 
   stages{
@@ -42,7 +43,7 @@ pipeline{
                             configs: [ 
                                 fileContentReplaceItemConfig( 
                                     search: "BACKEND_ENDPOINT_VARIABLE",
-                                    replace: "${env.BACKEND_ENDPOINT_VARIABLE}",
+                                    replace: "${env.\/${env.BRANCH_NAME}\/BACKEND_ENDPOINT_VARIABLE}",
                                     matchCount: 1
                                 )
                             ],
@@ -82,7 +83,7 @@ pipeline{
                       ){
                         // sh 'env'
                         sh """
-                        aws s3 sync ./build/ s3://${env.FE_S3_BUCKET}/ 
+                        aws s3 sync ./build/ s3://${env.S3_BUCKET_NAME}/ 
                         aws cloudfront create-invalidation --distribution-id ${env.CF_DIST_ID} --paths "/*"
                         """
                        }
