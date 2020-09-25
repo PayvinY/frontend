@@ -43,7 +43,7 @@ pipeline{
                             configs: [ 
                                 fileContentReplaceItemConfig( 
                                     search: "BACKEND_ENDPOINT_VARIABLE",
-                                    replace: "${env.\/${env.BRANCH_NAME}\/BACKEND_ENDPOINT_VARIABLE}",
+                                    replace: "${env.//${env.BRANCH_NAME}//BACKEND_ENDPOINT_VARIABLE}",
                                     matchCount: 1
                                 )
                             ],
