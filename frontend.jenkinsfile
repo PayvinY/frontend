@@ -10,6 +10,10 @@ pipeline{
     FE_S3_Bucket = 'payvinyhillel'
     CF_DIST_ID = 'E1TDB6JUZH3UVG'
     BACKEND_ENDPOINT = 'https://api.yurii.tiab.tech/api'
+    ECS_SERVICE_NAME = "conduit"  
+    CLUSTER_NAME = "yurii-tiab-tech"
+    ECR_URL = "228435919907.dkr.ecr.us-east-1.amazonaws.com.yurii-tiab-tech-conduit"
+    ECR_URI = "228435919907.dkr.ecr.us-east-1.amazonaws.com"
   }
 */
   environment {
