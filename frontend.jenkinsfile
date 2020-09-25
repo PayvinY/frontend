@@ -43,7 +43,7 @@ pipeline{
                             configs: [ 
                                 fileContentReplaceItemConfig( 
                                     search: "BACKEND_ENDPOINT_VARIABLE",
-                                    replace: "${env.//${env.BRANCH_NAME}//BACKEND_ENDPOINT_VARIABLE}",
+                                    replace: "${env./master/BACKEND_ENDPOINT_VARIABLE}",
                                     matchCount: 1
                                 )
                             ],
@@ -83,8 +83,8 @@ pipeline{
                       ){
                         // sh 'env'
                         sh """
-                        aws s3 sync ./build/ s3://${env.S3_BUCKET_NAME}/ 
-                        aws cloudfront create-invalidation --distribution-id ${env.CF_DIST_ID} --paths "/*"
+                        aws s3 sync ./build/ s3://${env./master/S3_BUCKET_NAME}/ 
+                        aws cloudfront create-invalidation --distribution-id ${env./master/CF_DIST_ID} --paths "/*"
                         """
                        }
                   }
